@@ -2,8 +2,26 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>はるひのさいきょうけいさんつーる</title>
 </head>
 <body>
-  <h1>coming soon....</h1>
+    <h1>ちょっとだけつくったヨ</h1>
+    <div id="sum"></div>
+    <div id="firstSet"><input type="button" class="button" value="1セット" onclick="sumSetMoney(1)"></div>
+    <div id="secondSet"><input type="button" class="button" value="2セット" onclick="sumSetMoney(2)"></div>
+    <div id="thirdSet"><input type="button" class="button" value="3セット" onclick="sumSetMoney(3)"></div>
+    <div id="fourthSet"><input type="button" class="button" value="4セット" onclick="sumSetMoney(4)"></div>
+    <div id="fifthSet"><input type="button" class="button" value="5セット" onclick="sumSetMoney(5)"></div>
+    <div id="smallDrink"><input type="button" class="button" value="Sドリンク" onclick="sum(1)"></div>
+    <div id="mediumDrink"><input type="button" class="button" value="Mドリンク" onclick="sum(2)"></div>
+    <div id="largeDrink"><input type="button" class="button" value="Lドリンク" onclick="sum(3)"></div>
+    <div id="finish"><input type="button" value="現金でお支払い" onclick="onDisplay(false)"></div>
+    <div id="finish"><input type="button" value="カードでお支払い" onclick="onDisplay(true)"></div>
+    <div id="reset"><input type="button" value="リセット" onclick="reset()"></div>
+  
+
+    <h2>なにを押したか表示するようにしたいね</h2>
+    <script src="app.js"></script>
 </body>

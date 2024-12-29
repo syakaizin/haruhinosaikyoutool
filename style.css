@@ -1,0 +1,20 @@
+h1 {
+    color:red;
+}
+
+#sum {
+    padding-bottom: 30px;
+}
+
+#smallDrink {
+    display:inline-block;
+}
+
+#mediumDrink {
+    display:inline-block;
+}
+
+#largeDrink {
+    display:inline-block;
+}
+
