@@ -2,6 +2,10 @@ h3 {
     color:blue;
 }
 
+.button {
+    margin-bottom: 5px;
+}
+
 #sum {
     padding-bottom: 30px;
 }
@@ -18,3 +22,10 @@ h3 {
     display:inline-block;
 }
 
+#reset {
+    padding-top: 30px;
+}
+
+#selectMenu {
+    padding-top: 20px;
+}
