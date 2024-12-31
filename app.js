@@ -37,6 +37,10 @@ function sumDrinkMoney(idx) {
             sumMoney += 3500;
             selectMenu += "Lドリンク\n";
             break;
+        case 4:
+            sumMoney += 170000;
+            selectMenu += "エンジェル ヘイロー\n";
+            break;
     }
     this.displaySelectedMenu();
 }
@@ -63,6 +67,8 @@ function sumFoodMoney(idx) {
             sumMoney += 800;
             selectMenu += "白と黒の社交ダンスT盛り\n";
             break;
+    
+        // フードもっとあるので追加予定
         // case 6:
         //     sumMoney += 600;
         //     selectMenu += "これは流石にポッキー!\n";
