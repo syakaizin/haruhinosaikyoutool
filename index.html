@@ -9,22 +9,34 @@
 <body>
     <h3>さいきょーけいさんつ～る</h3>
     <div id="sum"></div>
+    <div id="noTaxSum"></div>
     <div id="oshi"><input type="button" class="button" name="oshii" value="ハルヒ推し" onclick="changeFlg()"></div>
+    <div><p id="text">せっとすう</p></div>    
     <div id="firstSet"><input type="button" class="button" value="1セット" onclick="sumSetMoney(1)"></div>
     <div id="secondSet"><input type="button" class="button" value="2セット" onclick="sumSetMoney(2)"></div>
     <div id="thirdSet"><input type="button" class="button" value="3セット" onclick="sumSetMoney(3)"></div>
     <div id="fourthSet"><input type="button" class="button" value="4セット" onclick="sumSetMoney(4)"></div>
     <div id="fifthSet"><input type="button" class="button" value="5セット" onclick="sumSetMoney(5)"></div>
-    <div id="smallDrink"><input type="button" class="button" value="Sドリンク" onclick="sum(1)"></div>
-    <div id="mediumDrink"><input type="button" class="button" value="Mドリンク" onclick="sum(2)"></div>
-    <div id="largeDrink"><input type="button" class="button" value="Lドリンク" onclick="sum(3)"></div>
-    <div id="finish"><input type="button" class="button" value="現金でお支払い" onclick="onDisplay(false)"></div>
-    <div id="finish"><input type="button" class="button" value="カードでお支払い" onclick="onDisplay(true)"></div>
+    <div><p id="text">どりんく</p></div>    
+    <div id="smallDrink"><input type="button" class="button" value="Sドリンク" onclick="sumDrinkMoney(1)"></div>
+    <div id="mediumDrink"><input type="button" class="button" value="Mドリンク" onclick="sumDrinkMoney(2)"></div>
+    <div id="largeDrink"><input type="button" class="button" value="Lドリンク" onclick="sumDrinkMoney(3)"></div>
+    <div><p id="text">ふーど</p></div>
+    <div id="food"><input type="button" class="button" value="君がオレンジを抱いて///" onclick="sumFoodMoney(1)"></div>
+    <div id="food"><input type="button" class="button" value="ナポリの風" onclick="sumFoodMoney(2)"></div>
+    <div id="food"><input type="button" class="button" value="これは流石にポッキー!" onclick="sumFoodMoney(3)"></div>
+    <div id="food"><input type="button" class="button" value="渇きに飢えた者たちへの褒美" onclick="sumFoodMoney(4)"></div>
+    <div id="food"><input type="button" class="button" value="白と黒の社交ダンスT盛り" onclick="sumFoodMoney(5)"></div>
+
+    <div><p id="text">ちぇき！</p></div>
+    <div id="photo"><input type="button" class="button" value="ソロチェキ" onclick="sumPhotoMoney(1)"></div>
+    <div id="photo"><input type="button" class="button" value="ツーチェキ" onclick="sumPhotoMoney(2)"></div>
+
+    <div id="money"><input type="button" class="button" value="現金でお支払い" onclick="onDisplay(false)"></div>
+    <div id="card"><input type="button" class="button" value="カードでお支払い" onclick="onDisplay(true)"></div>
     <div id="reset"><input type="button" value="リセット" onclick="reset()"></div>
   
     <div id="selectMenu"></div>
-    <h4>とりあえず何となくの機能だけ！</h4>
-    <h4>見た目はもうちょいこだわるます</h4>
 
     <h6>ToDo 1つ前に戻る機能、メニュー増やす、デザイン、機能もう少し考える</h6>
     <script src="app.js"></script>

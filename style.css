@@ -6,20 +6,24 @@ h3 {
     margin-bottom: 5px;
 }
 
-#sum {
+#noTaxSum {
     padding-bottom: 30px;
 }
 
-#smallDrink {
+#firstSet, #secondSet, #thirdSet, #fourthSet, #fifthSet {
     display:inline-block;
 }
 
-#mediumDrink {
+#smallDrink, #mediumDrink, #largeDrink {
     display:inline-block;
 }
 
-#largeDrink {
+#photo {
     display:inline-block;
+}
+
+#money {
+    padding-top: 30px;
 }
 
 #reset {
