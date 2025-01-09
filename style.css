@@ -7,6 +7,10 @@ h3 {
 }
 
 #noTaxSum {
+    padding-bottom: 10px;   
+}
+
+#sumCard {
     padding-bottom: 30px;
 }
 
@@ -24,6 +28,15 @@ h3 {
 
 #money {
     padding-top: 30px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+  -moz-appearance:textfield;
 }
 
 #reset {
