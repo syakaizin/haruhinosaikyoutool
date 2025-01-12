@@ -3,6 +3,7 @@ let displaySumMoney = ""
 let displaySumMoneyCard = ""
 let displaySumMoneyNoTax = ""
 let oshiFlg = false;
+let firstLoginFlg = true;
 let selectMenu = "";
 
 function changeFlg() {
@@ -11,8 +12,18 @@ function changeFlg() {
     this.displaySelectedMenu();
 }
 
+function reLogin() {
+    firstLoginFlg = false;
+    selectMenu += "再ログイン\n";
+    this.displaySelectedMenu();
+}
+
 function sumSetMoney(setCount) {
-    sumMoney += 2500;
+    if (firstLoginFlg) {
+        sumMoney += 2500;
+    } else {
+        sumMoney += 3000;
+    }
     if (setCount >= 2) {
         sumMoney = sumMoney + 3000 * (setCount - 1);
     }
@@ -114,7 +125,7 @@ function sumPhotoMoney(idx) {
             selectMenu += "ツーチェキ\n";
             break;
         case 3:
-            sumMoney += 2300;
+            sumMoney += 2600;
             selectMenu += "フード付きチェキ\n";
             break;
     }
@@ -181,6 +192,9 @@ function reset() {
     // ボタンを活性化
     const moneyButton = document.getElementById('moneyButton');
     moneyButton.disabled = false;
+    // 各フラグを初期化
+    oshiFlg = false;
+    firstLoginFlg = true;
     selectMenu = "";
     this.displaySelectedMenu();
 }
