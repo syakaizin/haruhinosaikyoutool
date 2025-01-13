@@ -46,7 +46,7 @@ function sumDrinkMoney(idx) {
             break;
         case 3:
             sumMoney += 3500;
-            selectMenu += "Lドリンク\n";
+            selectMenu += "Lドリンク";
             break;
         case 4:
             sumMoney += 10000;
@@ -200,5 +200,6 @@ function reset() {
 }
 
 function displaySelectedMenu() {
+    console.log(selectMenu);
     document.getElementById('selectMenu').textContent = selectMenu;
 }

@@ -22,6 +22,19 @@ h3 {
     display:inline-block;
 }
 
+#cafepa {
+    display:inline-block;
+    break-before: always; 
+}
+
+#orishan, #mavam, #angel {
+    display:inline-block;
+}
+
+#food {
+    display:inline-block;
+}
+
 #photo {
     display:inline-block;
 }
