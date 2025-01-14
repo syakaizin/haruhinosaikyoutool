@@ -6,6 +6,10 @@ h3 {
     margin-bottom: 5px;
 }
 
+#oshi {
+    padding-top: 20px;
+}
+
 #noTaxSum {
     padding-bottom: 10px;   
 }
@@ -58,4 +62,12 @@ input[type="number"] {
 
 #selectMenu {
     padding-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#test {
+    padding-top: 30px;
 }

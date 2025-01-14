@@ -4,18 +4,34 @@ let displaySumMoneyCard = ""
 let displaySumMoneyNoTax = ""
 let oshiFlg = false;
 let firstLoginFlg = true;
+let lastIdx = 0;
+let drinkCount = 1;
+let recentlySelectMenu = "なにもえらんでないヨ";
 let selectMenu = "";
+document.getElementById('recentlySelectMenu').textContent = recentlySelectMenu;
+const selectmenu = document.querySelector("#selectListMoney");
+selectmenu.classList.toggle("hidden");
+
+function changeButtonDisable(buttonStatus) {
+    // ボタンを活性化
+    const moneyButton = document.getElementById('moneyButton');
+    moneyButton.disabled = buttonStatus;
+}
 
 function changeFlg() {
     oshiFlg = true;
-    selectMenu += "ハルヒ推し\n";
+    recentlySelectMenu = "ハルヒ推し\n";
+    selectMenu += recentlySelectMenu;
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function reLogin() {
     firstLoginFlg = false;
-    selectMenu += "再ログイン\n";
+    recentlySelectMenu = "再ログイン\n";
+    selectMenu += recentlySelectMenu;
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function sumSetMoney(setCount) {
@@ -30,42 +46,59 @@ function sumSetMoney(setCount) {
     if (oshiFlg) {
         sumMoney = sumMoney + 1000 * setCount;
     }
-    selectMenu += setCount.toString() + "セット\n";
+    recentlySelectMenu = setCount.toString() + "セット\n";
+    selectMenu += recentlySelectMenu;
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function sumDrinkMoney(idx) {
     switch (idx) {
         case 1:
             sumMoney += 1000;
-            selectMenu += "Sドリンク\n";
+            recentlySelectMenu = "Sドリンク\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 2:
             sumMoney += 2000;
-            selectMenu += "Mドリンク\n";
+            recentlySelectMenu = "Mドリンク\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 3:
             sumMoney += 3500;
-            selectMenu += "Lドリンク";
+            recentlySelectMenu = "Lドリンク\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 4:
             sumMoney += 10000;
-            selectMenu += "カフェ・ド・パリ\n";
+            recentlySelectMenu = "カフェ・ド・パリ\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 5:
             sumMoney += 25000;
-            selectMenu += "オリシャン\n";
+            recentlySelectMenu = "オリシャン\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 6:
             sumMoney += 20000;
-            selectMenu += "マバム\n";
+            recentlySelectMenu = "マバム\n";
+            selectMenu += recentlySelectMenu;
             break;
         case 15:
             sumMoney += 170000;
-            selectMenu += "エンジェル ヘイロー\n";
+            recentlySelectMenu = "エンジェル ヘイロー\n";
+            selectMenu += recentlySelectMenu;
             break;
     }
+    if (lastIdx === idx) {
+        drinkCount++;
+        recentlySelectMenu += "×" + drinkCount.toString();
+    } else {
+        drinkCount = 1;
+    }
+    lastIdx = idx;
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function sumFoodMoney(idx) {
@@ -112,6 +145,7 @@ function sumFoodMoney(idx) {
 
     }
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function sumPhotoMoney(idx) {
@@ -130,6 +164,7 @@ function sumPhotoMoney(idx) {
             break;
     }
     this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function count() {
@@ -139,6 +174,7 @@ function count() {
         selectMenu += "くじ/チンチロ ×" + Number(textbox.value).toString() + "回\n";
         this.displaySelectedMenu();
         textbox.value = '';
+        this.changeButtonDisable(false);
     }
 }
 
@@ -149,6 +185,7 @@ function count2() {
         selectMenu += "てきーら ×" + Number(textbox2.value).toString() + "杯\n";
         this.displaySelectedMenu();
         textbox2.value = '';
+        this.changeButtonDisable(false);
     }
 }
 
@@ -159,6 +196,7 @@ function sumTextboxValue() {
         selectMenu += Number(value.value).toString() + "\n";
         this.displaySelectedMenu();
         value.value = '';
+        this.changeButtonDisable(false);
     }
 }
 
@@ -177,8 +215,7 @@ function onDisplay() {
     document.getElementById('sumRealMoney').textContent = displaySumMoney;
     document.getElementById('sumCard').textContent = displaySumMoneyCard;
     document.getElementById('noTaxSum').textContent = displaySumMoneyNoTax;
-    const moneyButton = document.getElementById('moneyButton');
-    moneyButton.disabled = true;
+    this.changeButtonDisable(true);
 }
 
 
@@ -190,16 +227,23 @@ function reset() {
     document.getElementById('sumRealMoney').textContent = displaySumMoney;
     document.getElementById('sumCard').textContent = displaySumMoney;
     // ボタンを活性化
-    const moneyButton = document.getElementById('moneyButton');
-    moneyButton.disabled = false;
+    this.changeButtonDisable(false);
     // 各フラグを初期化
     oshiFlg = false;
     firstLoginFlg = true;
+    recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
     this.displaySelectedMenu();
 }
 
 function displaySelectedMenu() {
-    console.log(selectMenu);
+    document.getElementById('recentlySelectMenu').textContent = "いまおしたもの：" + recentlySelectMenu;
     document.getElementById('selectMenu').textContent = selectMenu;
+}
+
+function changeDisplay() {
+    const menuList = document.querySelector("#menuList");
+    menuList.classList.toggle("hidden");
+    const selectmenu = document.querySelector("#selectListMoney");
+    selectmenu.classList.toggle("hidden");
 }
