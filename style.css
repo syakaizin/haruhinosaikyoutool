@@ -6,22 +6,23 @@ h3 {
     margin-bottom: 5px;
 }
 
-.btn-square-shadow {
+.btn-square-pop {
+    position: relative;
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 0.25em 0.5em;
     text-decoration: none;
-    background: #ed7a07;/*ボタン色*/
     color: #FFF;
-    border-bottom: solid 4px #977b5d;
-    border-radius: 3px;
+    background: #fd9535;/*背景色*/
+    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
     margin-bottom: 20px;
   }
-  .btn-square-shadow:active {
-    /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-    border-bottom: none;
+  
+  .btn-square-pop:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }
 
 #oshi {
