@@ -8,15 +8,16 @@
 </head>
 <body>
     <h3>さいきょーけいさんつ～る</h3>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('option')">おぷしょん</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('set')">せっとすう</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('drink')">どりんく</div><br> 
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('food')">ふーど</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('pic')">ちぇき</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('other')">そのた</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('list')">注文一覧</div>
+    
     <div id="menuList">
-        <div id="recentlySelectMenu"></div> 
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('option')">おぷしょん</div>
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('set')">せっとすう</div>
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('drink')">どりんく</div><br> 
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('food')">ふーど</div>
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('pic')">ちぇき</div>
-        <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('other')">そのた</div>
-
+    <div id="recentlySelectMenu"></div> 
         <div id="menu0">   
             <div id="oshi"><input type="button" class="button" name="oshi" value="ハルヒ推し" onclick="changeFlg()"></div>
             <div id="rogin"><input type="button" class="button" name="" value="再ログイン" onclick="reLogin()"></div>
@@ -80,7 +81,6 @@
     </div>
     
     <div id="reset"><input type="button" value="リセット" onclick="reset()"></div>
-    <div id="test"><input type="button" value="画面切り替え" onclick="changeDisplay()"></div>
 
     <script src="app.js"></script>
 </body>

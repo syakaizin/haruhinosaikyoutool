@@ -1,5 +1,5 @@
 h3 {
-    color:blue;
+    color:#fa7b05;
 }
 
 .button {
@@ -18,15 +18,15 @@ h3 {
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
     margin-bottom: 20px;
-  }
+}
   
-  .btn-square-pop:active {
+.btn-square-pop:active {
     border-bottom: solid 2px #fd9535;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-  }
+}
 
-#oshi {
-    padding-top: 20px;
+#recentlySelectMenu {
+    margin-bottom: 15px;
 }
 
 #noTaxSum {

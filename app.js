@@ -58,6 +58,9 @@ function changeDiplayMenu(select) {
         case 'other':
             menu5Detail.classList.remove("hidden");
             break;
+        case 'list':
+            this.changeDisplay();
+            break;
     }
     // 表示してるものと違うものを表示させる場合
     if (select !== lastselect) {
@@ -81,6 +84,9 @@ function changeDiplayMenu(select) {
             case 'other':
                 menu5Detail.classList.add("hidden");
                 break;
+            case 'list':
+                this.changeDisplay();
+                break;
         }
         lastselect = select;
     }
@@ -103,7 +109,11 @@ function reLogin() {
 }
 
 function countPeople(count) {
-    countPeopleNumber = count
+    countPeopleNumber = count;
+    recentlySelectMenu = count.toString() + "人\n";
+    selectMenu += recentlySelectMenu;
+    this.displaySelectedMenu();
+    this.changeButtonDisable(false);
 }
 
 function sumSetMoney(setCount) {
@@ -116,7 +126,7 @@ function sumSetMoney(setCount) {
     if (setCount >= 2) {
         tmpSetMoney = tmpSetMoney + 3000 * (setCount - 1);
     }
-    sumMoney = tmpSetMoney*countPeopleNumber;
+    sumMoney = tmpSetMoney * countPeopleNumber;
     if (oshiFlg) {
         sumMoney = sumMoney + 1000 * setCount;
     }
