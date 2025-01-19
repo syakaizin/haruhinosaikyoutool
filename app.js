@@ -5,6 +5,7 @@ let menu3Detail = document.querySelector("#menu3");
 let menu4Detail = document.querySelector("#menu4");
 let menu5Detail = document.querySelector("#menu5");
 let lastselect = 'option';
+let countPeopleNumber = 1;
 let sumMoney = 0;
 let displaySumMoney = ""
 let displaySumMoneyCard = ""
@@ -101,15 +102,21 @@ function reLogin() {
     this.changeButtonDisable(false);
 }
 
+function countPeople(count) {
+    countPeopleNumber = count
+}
+
 function sumSetMoney(setCount) {
+    let tmpSetMoney = 0;
     if (firstLoginFlg) {
-        sumMoney += 2500;
+        tmpSetMoney += 2500;
     } else {
-        sumMoney += 3000;
+        tmpSetMoney += 3000;
     }
     if (setCount >= 2) {
-        sumMoney = sumMoney + 3000 * (setCount - 1);
+        tmpSetMoney = tmpSetMoney + 3000 * (setCount - 1);
     }
+    sumMoney = tmpSetMoney*countPeopleNumber;
     if (oshiFlg) {
         sumMoney = sumMoney + 1000 * setCount;
     }
