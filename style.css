@@ -45,6 +45,10 @@ h3 {
     display:inline-block;
 }
 
+#sixSet, #sevenSet, #eightSet, #nineSet, #tenSet {
+    display:inline-block;
+}
+
 #smallDrink, #mediumDrink, #largeDrink {
     display:inline-block;
 }
