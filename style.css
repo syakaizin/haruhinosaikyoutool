@@ -25,6 +25,10 @@ h3 {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
+#decide {
+    padding-top: 20px;
+}
+
 #recentlySelectMenu {
     margin-bottom: 15px;
 }

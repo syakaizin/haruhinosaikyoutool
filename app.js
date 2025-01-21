@@ -4,8 +4,12 @@ let menu2Detail = document.querySelector("#menu2");
 let menu3Detail = document.querySelector("#menu3");
 let menu4Detail = document.querySelector("#menu4");
 let menu5Detail = document.querySelector("#menu5");
+let menuListQuerySelector = document.querySelector("#menuList");
+let selectMenuQuerySelector = document.querySelector("#selectListMoney");
 let lastselect = 'option';
-let countPeopleNumber = 1;
+let countMenNumber = 0;
+let countWomenNumber = 0;
+let peopleCountDecideFlg = false;
 let sumMoney = 0;
 let displaySumMoney = ""
 let displaySumMoneyCard = ""
@@ -29,6 +33,8 @@ function ngOnInit() {
     menu4Detail.classList.add("hidden");
     menu5Detail.classList.add("hidden");
 
+    document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：0人)";
+
 }
 
 function changeButtonDisable(buttonStatus) {
@@ -38,57 +44,61 @@ function changeButtonDisable(buttonStatus) {
 }
 
 function changeDiplayMenu(select) {
-    // 押したタブのものを表示
-    switch (select) {
-        case 'option':
-            menu0Detail.classList.remove("hidden");
-            break;
-        case 'set':
-            menu1Detail.classList.remove("hidden");
-            break;
-        case 'drink':
-            menu2Detail.classList.remove("hidden");
-            break;
-        case 'food':
-            menu3Detail.classList.remove("hidden");
-            break;
-        case 'pic':
-            menu4Detail.classList.remove("hidden");
-            break;
-        case 'other':
-            menu5Detail.classList.remove("hidden");
-            break;
-        case 'list':
-            this.changeDisplay();
-            break;
-    }
-    // 表示してるものと違うものを表示させる場合
-    if (select !== lastselect) {
-        // 今表示してたものを隠す
-        switch (lastselect) {
+    if (peopleCountDecideFlg) {
+        // 押したタブのものを表示
+        switch (select) {
             case 'option':
-                menu0Detail.classList.add("hidden");
+                menu0Detail.classList.remove("hidden");
                 break;
             case 'set':
-                menu1Detail.classList.add("hidden");
+                menu1Detail.classList.remove("hidden");
                 break;
             case 'drink':
-                menu2Detail.classList.add("hidden");
+                menu2Detail.classList.remove("hidden");
                 break;
             case 'food':
-                menu3Detail.classList.add("hidden");
+                menu3Detail.classList.remove("hidden");
                 break;
             case 'pic':
-                menu4Detail.classList.add("hidden");
+                menu4Detail.classList.remove("hidden");
                 break;
             case 'other':
-                menu5Detail.classList.add("hidden");
+                menu5Detail.classList.remove("hidden");
                 break;
             case 'list':
                 this.changeDisplay();
                 break;
         }
-        lastselect = select;
+        // 表示してるものと違うものを表示させる場合
+        if (select !== lastselect) {
+            // 今表示してたものを隠す
+            switch (lastselect) {
+                case 'option':
+                    menu0Detail.classList.add("hidden");
+                    break;
+                case 'set':
+                    menu1Detail.classList.add("hidden");
+                    break;
+                case 'drink':
+                    menu2Detail.classList.add("hidden");
+                    break;
+                case 'food':
+                    menu3Detail.classList.add("hidden");
+                    break;
+                case 'pic':
+                    menu4Detail.classList.add("hidden");
+                    break;
+                case 'other':
+                    menu5Detail.classList.add("hidden");
+                    break;
+                case 'list':
+                    this.changeDisplay();
+                    break;
+            }
+            lastselect = select;
+        }
+    } else {
+        alert('にんずうけってい!を押してくださいな');
     }
 }
 
@@ -108,12 +118,46 @@ function reLogin() {
     this.changeButtonDisable(false);
 }
 
-function countPeople(count) {
-    countPeopleNumber = count;
-    recentlySelectMenu = count.toString() + "人\n";
-    selectMenu += recentlySelectMenu;
-    this.displaySelectedMenu();
-    this.changeButtonDisable(false);
+function countMen(count) {
+    if (!peopleCountDecideFlg) {
+        countMenNumber = count;
+        recentlySelectMenu = "♂" + count.toString() + "人\n";
+        this.displaySelectedMenu();
+        this.changeButtonDisable(false);
+        if (countWomenNumber == 0) {
+            document.getElementById('displayPeople').textContent = "eちゃん人数(♂：" + countMenNumber.toString() + "人、♀：0人)";
+        } else {
+            document.getElementById('displayPeople').textContent = "eちゃん人数(♂：" + countMenNumber.toString() + "人、♀：" + countWomenNumber.toString() + "人)";
+        }
+    } else {
+        alert('人数変えたい場合はリセット押してくださいな');
+    }
+}
+
+function countWomen(count) {
+    if (!peopleCountDecideFlg) {
+        countWomenNumber = count;
+        recentlySelectMenu = "♀" + count.toString() + "人\n";
+        this.displaySelectedMenu();
+        this.changeButtonDisable(false);
+        if (countMenNumber == 0) {
+            document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：" + countWomenNumber.toString() + "人)";
+        } else {
+            document.getElementById('displayPeople').textContent = "eちゃん人数(♂：" + countMenNumber.toString() + "人、♀：" + countWomenNumber.toString() + "人)";
+        }
+    } else {
+        alert('人数変えたい場合はリセット押してくださいな');
+    }
+}
+
+function peopleCountDecide() {
+    if (countMenNumber + countWomenNumber >= 1) {
+        peopleCountDecideFlg = true;
+        selectMenu += "♂：" + countMenNumber.toString() + "人、♀：" + countWomenNumber.toString() + "人" + "\n";
+        this.displaySelectedMenu();
+    } else {
+        alert('eちゃんの人数選択してから押してくださいな');
+    }
 }
 
 function sumSetMoney(setCount) {
@@ -126,7 +170,7 @@ function sumSetMoney(setCount) {
     if (setCount >= 2) {
         tmpSetMoney = tmpSetMoney + 3000 * (setCount - 1);
     }
-    sumMoney = tmpSetMoney * countPeopleNumber;
+    sumMoney = tmpSetMoney * countMenNumber + 0.5 * tmpSetMoney * countWomenNumber;
     if (oshiFlg) {
         sumMoney = sumMoney + 1000 * setCount;
     }
@@ -333,6 +377,21 @@ function reset() {
     // 各フラグを初期化
     oshiFlg = false;
     firstLoginFlg = true;
+    peopleCountDecideFlg = false;
+    // おぷしょんの画面に戻すようにする
+    menu0Detail.classList.remove("hidden");
+    menu1Detail.classList.add("hidden");
+    menu2Detail.classList.add("hidden");
+    menu3Detail.classList.add("hidden");
+    menu4Detail.classList.add("hidden");
+    menu5Detail.classList.add("hidden");
+    menuListQuerySelector.classList.remove("hidden");
+    selectMenuQuerySelector.classList.add("hidden");
+    // eちゃんの人数リセット
+    countMenNumber = 0;
+    countWomenNumber = 0;
+    document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：0人)";
+
     recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
     this.displaySelectedMenu();
@@ -344,8 +403,6 @@ function displaySelectedMenu() {
 }
 
 function changeDisplay() {
-    const menuList = document.querySelector("#menuList");
-    menuList.classList.toggle("hidden");
-    const selectmenu = document.querySelector("#selectListMoney");
-    selectmenu.classList.toggle("hidden");
+    menuListQuerySelector.classList.toggle("hidden");
+    selectMenuQuerySelector.classList.toggle("hidden");
 }
