@@ -198,7 +198,7 @@ function sumDrinkMoney(idx) {
             selectMenu += recentlySelectMenu;
             break;
         case 4:
-            sumMoney += 3900;
+            sumMoney += 3700;
             recentlySelectMenu = "シャンメリー\n";
             selectMenu += recentlySelectMenu;
             break;
@@ -215,6 +215,11 @@ function sumDrinkMoney(idx) {
         case 7:
             sumMoney += 20000;
             recentlySelectMenu = "マバム\n";
+            selectMenu += recentlySelectMenu;
+            break;
+        case 8:
+            sumMoney += 29000;
+            recentlySelectMenu = "ヴーヴ・イエロー\n";
             selectMenu += recentlySelectMenu;
             break;
         case 15:
@@ -291,7 +296,7 @@ function sumFoodMoney(idx) {
 function sumPhotoMoney(idx) {
     switch (idx) {
         case 1:
-            sumMoney += 1300;
+            sumMoney += 1200;
             recentlySelectMenu = "ソロチェキ\n";
             selectMenu += recentlySelectMenu;
             break;
