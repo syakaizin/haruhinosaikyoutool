@@ -396,6 +396,8 @@ function reset() {
     countMenNumber = 0;
     countWomenNumber = 0;
     document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：0人)";
+    // タブの最後に選択したものも初期設定に戻す
+    lastselect = 'option';
 
     recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
