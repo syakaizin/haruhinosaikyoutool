@@ -94,6 +94,11 @@ input[type="number"] {
     display: none;
 }
 
-#test {
-    padding-top: 30px;
+#login {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#memo {
+    padding-top: 20px;
 }

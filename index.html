@@ -15,6 +15,7 @@
     <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('pic')">ちぇき</div>
     <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('other')">そのた</div>
     <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('list')">注文一覧</div>
+    <div href="#" class="btn-square-pop" onclick="changeDiplayMenu('time')">とけい</div>
     
     <div id="menuList">
     <div id="recentlySelectMenu"></div> 
@@ -80,6 +81,21 @@
             <div><p id="text">メニューなかったとき(ゲイツ手打ちしてね)</p></div>
             <div id="other"><input id="noMenu" type="number" autocomplete="off" pattern="^[0-9]+$" inputmode="numeric"><input type="button" class="button" value="追加" onclick="sumTextboxValue()"></div>
         </div>
+
+        <div id="LoginTime">
+            <div id="time"><input id="hour" type="number" autocomplete="off" pattern="^[0-9]+$" inputmode="numeric">時<input id="minute" type="number" autocomplete="off" pattern="^[0-9]+$" inputmode="numeric">分</div>
+            <div id="login"><input type="button" class="button" value="ログイン！" onclick="calculateTime()"></div>
+            <div id="timeList1"></div>
+            <div id="timeList2"></div>
+            <div id="timeList3"></div>
+            <div id="timeList4"></div>
+            <div id="timeList5"></div>
+            <div id="timeList6"></div>
+            <div id="timeList7"></div>
+            <div id="timeList8"></div>
+            <div id="memo">メモしたらリセット押してくださいな</div>
+        </div>
+        
 
     
     </div>

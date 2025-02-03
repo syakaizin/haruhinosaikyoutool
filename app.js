@@ -4,6 +4,7 @@ let menu2Detail = document.querySelector("#menu2");
 let menu3Detail = document.querySelector("#menu3");
 let menu4Detail = document.querySelector("#menu4");
 let menu5Detail = document.querySelector("#menu5");
+let loginTime = document.querySelector("#LoginTime");
 let menuListQuerySelector = document.querySelector("#menuList");
 let selectMenuQuerySelector = document.querySelector("#selectListMoney");
 let lastselect = 'option';
@@ -32,6 +33,7 @@ function ngOnInit() {
     menu3Detail.classList.add("hidden");
     menu4Detail.classList.add("hidden");
     menu5Detail.classList.add("hidden");
+    loginTime.classList.add("hidden");
 
     document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：0人)";
 
@@ -95,9 +97,19 @@ function changeDiplayMenu(select) {
                     this.changeDisplay();
                     break;
             }
+            loginTime.classList.add("hidden");
             lastselect = select;
         }
-    } else {
+    } else if (select === 'time') {
+        menu0Detail.classList.add("hidden");
+        menu1Detail.classList.add("hidden");
+        menu2Detail.classList.add("hidden");
+        menu3Detail.classList.add("hidden");
+        menu4Detail.classList.add("hidden");
+        menu5Detail.classList.add("hidden");
+        loginTime.classList.remove("hidden");
+    }
+    else {
         alert('にんずうけってい!を押してくださいな');
     }
 }
@@ -390,6 +402,7 @@ function reset() {
     menu3Detail.classList.add("hidden");
     menu4Detail.classList.add("hidden");
     menu5Detail.classList.add("hidden");
+    loginTime.classList.add("hidden");
     menuListQuerySelector.classList.remove("hidden");
     selectMenuQuerySelector.classList.add("hidden");
     // eちゃんの人数リセット
@@ -398,6 +411,10 @@ function reset() {
     document.getElementById('displayPeople').textContent = "eちゃん人数(♂： 0人、♀：0人)";
     // タブの最後に選択したものも初期設定に戻す
     lastselect = 'option';
+
+    //とけいタブの値の中身も全部消す
+    this.cleanTimeList();
+
 
     recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
@@ -413,3 +430,104 @@ function changeDisplay() {
     menuListQuerySelector.classList.toggle("hidden");
     selectMenuQuerySelector.classList.toggle("hidden");
 }
+
+function calculateTime() {
+    if (document.getElementById('timeList1').textContent !== "") {
+        this.cleanTimeList();
+    }
+    let hourElement = document.getElementById('hour');
+    let minuteElement = document.getElementById('minute');
+    let hourFlg = false;
+    let hour = Number(hourElement.value);
+    let minute = Number(minuteElement.value);
+    if (!(hour >= 25 || minute >= 56) && !(hourElement.value == "" || minuteElement.value == "")) {
+        if (minute % 5 == 0) {
+            for (let i = 1; i <= 8; i++) {
+                switch (i) {
+                    case 1:
+                        document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 2:
+                        document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 3:
+                        document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 4:
+                        document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 5:
+                        document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 6:
+                        document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 7:
+                        document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                    case 8:
+                        document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        break;
+                }
+                switch (minute) {
+                    case 0:
+
+                    case 5:
+
+                    case 10:
+
+                    case 15:
+                        minute += 40;
+                        hourFlg = false;
+                        break;
+                    case 20:
+
+                    case 25:
+
+                    case 30:
+
+                    case 35:
+
+                    case 40:
+
+                    case 45:
+
+                    case 50:
+
+                    case 55:
+                        minute -= 20;
+                        hourFlg = true;
+                        break;
+                }
+
+                if (hourFlg) {
+                    if (hour == 24 || hour == 0) {
+                        hour = 1;
+                    } else {
+                        hour++;
+                        if (hour == 24) {
+                            hour = 0;
+                        }
+                    }
+                }
+            }
+            hourElement.value = "";
+            minuteElement.value = "";
+        } else {
+            alert('5分刻みで入力してくだせぇ');
+        }
+    } else {
+        alert('そんな時間は計算できまへん');
+    }
+}
+
+function cleanTimeList() {
+    document.getElementById('timeList1').textContent = "";
+    document.getElementById('timeList2').textContent = "";
+    document.getElementById('timeList3').textContent = "";
+    document.getElementById('timeList4').textContent = "";
+    document.getElementById('timeList5').textContent = "";
+    document.getElementById('timeList6').textContent = "";
+    document.getElementById('timeList7').textContent = "";
+    document.getElementById('timeList8').textContent = "";
+} 
