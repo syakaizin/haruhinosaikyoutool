@@ -415,6 +415,8 @@ function reset() {
     //とけいタブの値の中身も全部消す
     this.cleanTimeList();
 
+    drinkCount = 1;
+    lastIdx = 0;
 
     recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
@@ -443,32 +445,6 @@ function calculateTime() {
     if (!(hour >= 25 || minute >= 56) && !(hourElement.value == "" || minuteElement.value == "")) {
         if (minute % 5 == 0) {
             for (let i = 1; i <= 8; i++) {
-                switch (i) {
-                    case 1:
-                        document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 2:
-                        document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 3:
-                        document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 4:
-                        document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 5:
-                        document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 6:
-                        document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 7:
-                        document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                    case 8:
-                        document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                        break;
-                }
                 switch (minute) {
                     case 0:
 
@@ -509,6 +485,65 @@ function calculateTime() {
                             hour = 0;
                         }
                     }
+                }
+
+                switch (i) {
+                    case 1:
+                        if (minute < 10) {
+                            document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 2:
+                        if (minute < 10) {
+                            document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 3:
+                        if (minute < 10) {
+                            document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 4:
+                        if (minute < 10) {
+                            document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 5:
+                        if (minute < 10) {
+                            document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 6:
+                        if (minute < 10) {
+                            document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 7:
+                        if (minute < 10) {
+                            document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 8:
+                        if (minute < 10) {
+                            document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
                 }
             }
             hourElement.value = "";
