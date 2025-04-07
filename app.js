@@ -341,11 +341,22 @@ function sumPhotoMoney(idx) {
     this.changeButtonDisable(false);
 }
 
-function count() {
+function count(flg) {
     let textbox = document.getElementById('times');
+    let textbox2 = document.getElementById('times2');
+    if (flg) {
+        if (Number(textbox2.value) >= 1) {
+            sumMoney += 1500 * Number(textbox2.value);
+            recentlySelectMenu = "テキーラ(ハルヒ用) ×" + Number(textbox2.value).toString() + "回\n";
+            selectMenu += recentlySelectMenu;
+            this.displaySelectedMenu();
+            textbox2.value = '';
+            this.changeButtonDisable(false);
+        }
+    }
     if (Number(textbox.value) >= 1) {
         sumMoney += 1000 * Number(textbox.value);
-        recentlySelectMenu = "くじ/チンチロ ×" + Number(textbox.value).toString() + "回\n";
+        recentlySelectMenu = "くじ/チンチロ/テキーラ ×" + Number(textbox.value).toString() + "回\n";
         selectMenu += recentlySelectMenu;
         this.displaySelectedMenu();
         textbox.value = '';
@@ -354,24 +365,24 @@ function count() {
 }
 
 function count2(flg) {
-    let textbox2 = document.getElementById('times2');
     let textbox3 = document.getElementById('times3');
+    let textbox4 = document.getElementById('times4');
     if (flg) {
-        if (Number(textbox3.value) >= 1) {
-            sumMoney += 2000 * Number(textbox3.value);
-            recentlySelectMenu = "てきーら(ハルヒ用) ×" + Number(textbox3.value).toString() + "杯\n";
+        if (Number(textbox4.value) >= 1) {
+            sumMoney += 2000 * Number(textbox4.value);
+            recentlySelectMenu = "てきーら(ハルヒ用) ×" + Number(textbox4.value).toString() + "杯\n";
             selectMenu += recentlySelectMenu;
             this.displaySelectedMenu();
-            textbox3.value = '';
+            textbox4.value = '';
             this.changeButtonDisable(false);
         }
     } else {
-        if (Number(textbox2.value) >= 1) {
-            sumMoney += 1500 * Number(textbox2.value);
-            recentlySelectMenu = "てきーら ×" + Number(textbox2.value).toString() + "杯\n";
+        if (Number(textbox3.value) >= 1) {
+            sumMoney += 1500 * Number(textbox3.value);
+            recentlySelectMenu = "てきーら ×" + Number(textbox3.value).toString() + "杯\n";
             selectMenu += recentlySelectMenu;
             this.displaySelectedMenu();
-            textbox2.value = '';
+            textbox3.value = '';
             this.changeButtonDisable(false);
         }
     }
