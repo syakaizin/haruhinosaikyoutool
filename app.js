@@ -18,6 +18,8 @@ let displaySumMoneyNoTax = ""
 let oshiFlg = false;
 let firstLoginFlg = true;
 let lastIdx = 0;
+let lastIdxPhoto = 0;
+let PhotoCount = 1;
 let drinkCount = 1;
 let recentlySelectMenu = "なにもえらんでないヨ";
 let selectMenu = "";
@@ -220,16 +222,21 @@ function sumDrinkMoney(idx) {
             selectMenu += recentlySelectMenu;
             break;
         case 6:
+            sumMoney += 13000;
+            recentlySelectMenu = "アスティ\n";
+            selectMenu += recentlySelectMenu;
+            break;
+        case 7:
             sumMoney += 25000;
             recentlySelectMenu = "オリシャン\n";
             selectMenu += recentlySelectMenu;
             break;
-        case 7:
+        case 8:
             sumMoney += 20000;
             recentlySelectMenu = "マバム\n";
             selectMenu += recentlySelectMenu;
             break;
-        case 8:
+        case 9:
             sumMoney += 29000;
             recentlySelectMenu = "ヴーヴ・イエロー\n";
             selectMenu += recentlySelectMenu;
@@ -323,6 +330,13 @@ function sumPhotoMoney(idx) {
             selectMenu += recentlySelectMenu;
             break;
     }
+    if (lastIdxPhoto === idx) {
+        PhotoCount++;
+        recentlySelectMenu += "×" + PhotoCount.toString();
+    } else {
+        PhotoCount = 1;
+    }
+    lastIdxPhoto = idx;
     this.displaySelectedMenu();
     this.changeButtonDisable(false);
 }
@@ -339,16 +353,29 @@ function count() {
     }
 }
 
-function count2() {
+function count2(flg) {
     let textbox2 = document.getElementById('times2');
-    if (Number(textbox2.value) >= 1) {
-        sumMoney += 1500 * Number(textbox2.value);
-        recentlySelectMenu = "てきーら ×" + Number(textbox2.value).toString() + "杯\n";
-        selectMenu += recentlySelectMenu;
-        this.displaySelectedMenu();
-        textbox2.value = '';
-        this.changeButtonDisable(false);
+    let textbox3 = document.getElementById('times3');
+    if (flg) {
+        if (Number(textbox3.value) >= 1) {
+            sumMoney += 2000 * Number(textbox3.value);
+            recentlySelectMenu = "てきーら(ハルヒ用) ×" + Number(textbox3.value).toString() + "杯\n";
+            selectMenu += recentlySelectMenu;
+            this.displaySelectedMenu();
+            textbox3.value = '';
+            this.changeButtonDisable(false);
+        }
+    } else {
+        if (Number(textbox2.value) >= 1) {
+            sumMoney += 1500 * Number(textbox2.value);
+            recentlySelectMenu = "てきーら ×" + Number(textbox2.value).toString() + "杯\n";
+            selectMenu += recentlySelectMenu;
+            this.displaySelectedMenu();
+            textbox2.value = '';
+            this.changeButtonDisable(false);
+        }
     }
+
 }
 
 function sumTextboxValue() {
@@ -417,6 +444,8 @@ function reset() {
 
     drinkCount = 1;
     lastIdx = 0;
+    PhotoCount = 1;
+    lastIdxPhoto = 0;
 
     recentlySelectMenu = "なにもえらんでないヨ";
     selectMenu = "";
@@ -549,7 +578,7 @@ function calculateTime() {
             hourElement.value = "";
             minuteElement.value = "";
         } else {
-            alert('5分刻みで入力してくだせぇ');
+            alert('5分刻みで入力してちょ');
         }
     } else {
         alert('そんな時間は計算できまへん');
