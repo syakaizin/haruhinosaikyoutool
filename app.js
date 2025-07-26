@@ -446,6 +446,10 @@ function reset() {
     //とけいタブの値の中身も全部消す
     this.cleanTimeList();
     happyHourFlg = false;
+    let hourElement = document.getElementById('hour');
+    let minuteElement = document.getElementById('minute');
+    hourElement.value = "";
+    minuteElement.value = "";
 
     drinkCount = 1;
     lastIdx = 0;
@@ -469,6 +473,10 @@ function changeDisplay() {
 
 function changeHappyHourFlg() {
     happyHourFlg = true;
+    recentlySelectMenu = "ハッピーアワー\n";
+    selectMenu += recentlySelectMenu;
+    this.displaySelectedMenu();
+
 }
 
 function calculateTime() {
@@ -482,6 +490,19 @@ function calculateTime() {
     let minute = Number(minuteElement.value);
     if (!(hour >= 25 || minute >= 56) && !(hourElement.value == "" || minuteElement.value == "")) {
         if (happyHourFlg) {
+            if (hour >= 18 && hour <= 20) {
+                if (hour === 20) {
+                    if (minute <= 30) {
+
+                    } else {
+                        alert('ハッピーアワーの適用外です・・・間違えたらリセット押してくださいな');
+                        return;
+                    }
+                }
+            } else {
+                alert('ハッピーアワーの適用外です・・・間違えたらリセット押してくださいな');
+                return;
+            }
             if (minute % 5 == 0) {
                 for (let i = 1; i <= 8; i++) {
                     if (i !== 1) { 
