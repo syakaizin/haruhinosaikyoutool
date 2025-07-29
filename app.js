@@ -22,7 +22,6 @@ let PhotoCount = 1;
 let drinkCount = 1;
 let recentlySelectMenu = "なにもえらんでないヨ";
 let selectMenu = "";
-let happyHourFlg = false;
 document.getElementById('recentlySelectMenu').textContent = recentlySelectMenu;
 const selectmenu = document.querySelector("#selectListMoney");
 selectmenu.classList.toggle("hidden");
@@ -445,7 +444,6 @@ function reset() {
 
     //とけいタブの値の中身も全部消す
     this.cleanTimeList();
-    happyHourFlg = false;
     let hourElement = document.getElementById('hour');
     let minuteElement = document.getElementById('minute');
     hourElement.value = "";
@@ -471,14 +469,6 @@ function changeDisplay() {
     selectMenuQuerySelector.classList.toggle("hidden");
 }
 
-function changeHappyHourFlg() {
-    happyHourFlg = true;
-    recentlySelectMenu = "ハッピーアワー\n";
-    selectMenu += recentlySelectMenu;
-    this.displaySelectedMenu();
-
-}
-
 function calculateTime() {
     if (document.getElementById('timeList1').textContent !== "") {
         this.cleanTimeList();
@@ -489,248 +479,118 @@ function calculateTime() {
     let hour = Number(hourElement.value);
     let minute = Number(minuteElement.value);
     if (!(hour >= 25 || minute >= 56) && !(hourElement.value == "" || minuteElement.value == "")) {
-        if (happyHourFlg) {
-            if (hour >= 18 && hour <= 20) {
-                if (hour === 20) {
-                    if (minute <= 30) {
+        if (minute % 5 == 0) {
+            for (let i = 1; i <= 8; i++) {
+                if (i !== 1) {
+                    switch (minute) {
+                        case 0:
 
-                    } else {
-                        alert('ハッピーアワーの適用外です・・・間違えたらリセット押してくださいな');
-                        return;
-                    }
-                }
-            } else {
-                alert('ハッピーアワーの適用外です・・・間違えたらリセット押してくださいな');
-                return;
-            }
-            if (minute % 5 == 0) {
-                for (let i = 1; i <= 8; i++) {
-                    if (i !== 1) { 
-                        switch (minute) {
-                            case 0:
-        
-                            case 5:
-        
-                            case 10:
-        
-                            case 15:
-                                minute += 40;
-                                hourFlg = false;
-                                break;
-                            case 20:
-        
-                            case 25:
-        
-                            case 30:
-        
-                            case 35:
-        
-                            case 40:
-        
-                            case 45:
-        
-                            case 50:
-        
-                            case 55:
-                                minute -= 20;
-                                hourFlg = true;
-                                break;
-                        }
-    
-                        if (hourFlg) {
-                            if (hour == 24 || hour == 0) {
-                                hour = 1;
-                            } else {
-                                hour++;
-                                if (hour == 24) {
-                                    hour = 0;
-                                }
-                            }
-                        }
-                    } 
-                    else {
-                        hour++;
-                    }
-    
-                    switch (i) {
-                        case 1:
-                            if (minute < 10) {
-                                document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 2:
-                            if (minute < 10) {
-                                document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 3:
-                            if (minute < 10) {
-                                document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 4:
-                            if (minute < 10) {
-                                document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
                         case 5:
-                            if (minute < 10) {
-                                document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
+
+                        case 10:
+
+                        case 15:
+                            minute += 40;
+                            hourFlg = false;
                             break;
-                        case 6:
-                            if (minute < 10) {
-                                document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 7:
-                            if (minute < 10) {
-                                document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 8:
-                            if (minute < 10) {
-                                document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
+                        case 20:
+
+                        case 25:
+
+                        case 30:
+
+                        case 35:
+
+                        case 40:
+
+                        case 45:
+
+                        case 50:
+
+                        case 55:
+                            minute -= 20;
+                            hourFlg = true;
                             break;
                     }
-                }
-                hourElement.value = "";
-                minuteElement.value = "";
-            } else {
-                alert('5分刻みで入力してちょ');
-            }
-        } 
-        else {
-            if (minute % 5 == 0) {
-                for (let i = 1; i <= 8; i++) {
-                    if (i !== 1) { 
-                        switch (minute) {
-                            case 0:
-        
-                            case 5:
-        
-                            case 10:
-        
-                            case 15:
-                                minute += 40;
-                                hourFlg = false;
-                                break;
-                            case 20:
-        
-                            case 25:
-        
-                            case 30:
-        
-                            case 35:
-        
-                            case 40:
-        
-                            case 45:
-        
-                            case 50:
-        
-                            case 55:
-                                minute -= 20;
-                                hourFlg = true;
-                                break;
-                        }
-    
-                        if (hourFlg) {
-                            if (hour == 24 || hour == 0) {
-                                hour = 1;
-                            } else {
-                                hour++;
-                                if (hour == 24) {
-                                    hour = 0;
-                                }
+
+                    if (hourFlg) {
+                        if (hour == 24 || hour == 0) {
+                            hour = 1;
+                        } else {
+                            hour++;
+                            if (hour == 24) {
+                                hour = 0;
                             }
                         }
-                    } 
-                    else {
-                        hour++;
-                    }
-    
-                    switch (i) {
-                        case 1:
-                            if (minute < 10) {
-                                document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 2:
-                            if (minute < 10) {
-                                document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 3:
-                            if (minute < 10) {
-                                document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 4:
-                            if (minute < 10) {
-                                document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 5:
-                            if (minute < 10) {
-                                document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 6:
-                            if (minute < 10) {
-                                document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 7:
-                            if (minute < 10) {
-                                document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
-                        case 8:
-                            if (minute < 10) {
-                                document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
-                            } else {
-                                document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
-                            }
-                            break;
                     }
                 }
-                hourElement.value = "";
-                minuteElement.value = "";
-            } else {
-                alert('5分刻みで入力してちょ');
+                else {
+                    hour++;
+                }
+
+                switch (i) {
+                    case 1:
+                        if (minute < 10) {
+                            document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList1').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 2:
+                        if (minute < 10) {
+                            document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList2').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 3:
+                        if (minute < 10) {
+                            document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList3').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 4:
+                        if (minute < 10) {
+                            document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList4').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 5:
+                        if (minute < 10) {
+                            document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList5').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 6:
+                        if (minute < 10) {
+                            document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList6').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 7:
+                        if (minute < 10) {
+                            document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList7').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                    case 8:
+                        if (minute < 10) {
+                            document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":0" + minute.toString();
+                        } else {
+                            document.getElementById('timeList8').textContent += i.toString() + "セット " + hour.toString() + ":" + minute.toString();
+                        }
+                        break;
+                }
             }
+            hourElement.value = "";
+            minuteElement.value = "";
+        } else {
+            alert('5分刻みで入力してちょ');
         }
     } else {
         alert('そんな時間は計算できまへん');
